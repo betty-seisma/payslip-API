@@ -1,11 +1,3 @@
-import {
-  IncomeTaxCalculator,
-  LowerTaxBracketCalculator,
-  MiddleTaxBracketCalculator,
-  HigherTaxBracketCalculator,
-  TopTaxBracketCalculator,
-} from "./tax-calculator";
-
 export interface Employee {
   firstName: string;
   lastName: string;
@@ -70,16 +62,6 @@ export function calculateGrossIncome(annualSalary: number): number {
 }
 
 export function calculateIncomeTax(annualSalary: number, taxBrackets: TaxBracket[]): number{
-  // const Calculators: IncomeTaxCalculator[] = [
-  //   new LowerTaxBracketCalculator(),
-  //   new MiddleTaxBracketCalculator(),
-  //   new HigherTaxBracketCalculator(),
-  //   new TopTaxBracketCalculator(),
-  // ];
-  // const Calculator =
-  //   Calculators.find((s) => s.calculateTax(annualSalary) !== undefined);
-  //   return Calculator ? Math.round((Calculator.calculateTax(annualSalary) ?? 0) / 12) : 0;
-
   let tax = 0;
 
   for (const bracket of taxBrackets) {
@@ -102,7 +84,3 @@ export function calculateSuperannuation(
 export function calculateNetIncome(grossIncome: number, incomeTax: number): number {
   return grossIncome - incomeTax;
 }
-
-// every function has a unit test
-// integration tests (some uses docker image, but avoid)
-//performance test (tps, rps) with gatling
